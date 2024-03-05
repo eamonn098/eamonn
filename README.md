@@ -42,7 +42,7 @@ sudo git clone https://github.com/waveshare/e-Paper
 4) Navigate to Pi/Python folder, and Install 'waveshare-epd' Python module from setup.py
 
 ```bash
-cd e-Paper/RaspberryPi\&JetsonNano/python
+cd e-Paper/RaspberryPi_JetsonNano/python
 sudo python3 setup.py install
 ```
 
