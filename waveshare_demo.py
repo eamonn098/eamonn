@@ -23,29 +23,28 @@ try:
     epd.init()
     epd.Clear()
 
+    font48 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 48)
     font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
-    logging.info("read bmp file")
-    Himage = Image.open(os.path.join(picdir, 'testimg.bmp'))
-    epd.display(epd.getbuffer(Himage))
-    time.sleep(4)
+    # logging.info("read bmp file")
+    # Himage = Image.open(os.path.join(picdir, 'testimg.bmp'))
+    # epd.display(epd.getbuffer(Himage))
+    # time.sleep(4)
 
-    logging.info("read bmp file on window")
-    Himage2 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
-    bmp = Image.open(os.path.join(picdir, '100x100.bmp'))
-    Himage2.paste(bmp, (50,10))
-    epd.display(epd.getbuffer(Himage2))
-    time.sleep(2)
+    # logging.info("read bmp file on window")
+    # Himage2 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
+    # bmp = Image.open(os.path.join(picdir, '100x100.bmp'))
+    # Himage2.paste(bmp, (50,10))
+    # epd.display(epd.getbuffer(Himage2))
+    # time.sleep(2)
 
     # Drawing on the Horizontal image
     logging.info("Drawing on the Horizontal image...")
     epd.init_fast()
     Himage = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Himage)
-    draw.text((10, 0), 'hello world', font = font24, fill = 0)
-    draw.text((10, 20), '7.5inch e-Paper', font = font24, fill = 0)
-    draw.text((150, 0), u'微雪电子', font = font24, fill = 0)
+    draw.text((10, 0), 'BIG TEXT', font = font24, fill = 0)
     draw.line((20, 50, 70, 100), fill = 0)
     draw.line((70, 50, 20, 100), fill = 0)
     draw.rectangle((20, 50, 70, 100), outline = 0)
@@ -55,7 +54,7 @@ try:
     draw.rectangle((80, 50, 130, 100), fill = 0)
     draw.chord((200, 50, 250, 100), 0, 360, fill = 0)
     epd.display(epd.getbuffer(Himage))
-    time.sleep(2)
+    time.sleep(4)
 
     # partial update
     logging.info("5.show time")
