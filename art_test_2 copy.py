@@ -44,7 +44,7 @@ im = im.resize((460,460))
 Canv.paste(im, (160,10))
 Canv.show()
 print(im.format, im.size, im.mode)
-Canv.save(picdir'tester.bmp')
+Canv.save(os.path.join(picdir, 'tester.bmp'))
 
 try:
     logging.info("epd7in5_V2 Demo")
