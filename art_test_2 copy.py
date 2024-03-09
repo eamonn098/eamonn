@@ -12,13 +12,12 @@ from waveshare_epd import epd7in5_V2
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
-
-logging.basicConfig(level=logging.DEBUG)
-
 from PIL import Image
 import requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+
+logging.basicConfig(level=logging.DEBUG)
 
 scope = "user-read-currently-playing,user-read-recently-played"
 #url for image
@@ -39,8 +38,7 @@ im = im.convert("P")
 #sq fit to scren
 im = im.resize((460,460))
 #overlay
-Canv.paste(im, (160,10))
-print(im.format, im.size, im.mode)
+Canv.paste(im, (170,10))
 Canv.save(os.path.join(picdir, 'tester.bmp'))
 
 try:
@@ -51,14 +49,16 @@ try:
     epd.init()
     epd.Clear()
 
-    font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
+    font60 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 60)
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
 
     logging.info("read bmp file on window")
     Himage2 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
     bmp = Image.open(os.path.join(picdir, 'tester.bmp'))
-    Himage2.paste(bmp, (50,10))
+    Himage2.paste(bmp, (0,0))
+    draw = ImageDraw.Draw(Himage2)
+    draw.text((10, 0), name, font = font60, fill = 0)
     epd.display(epd.getbuffer(Himage2))
     time.sleep(180)
 
