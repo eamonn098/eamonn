@@ -54,7 +54,11 @@ try:
             breakcount=0
             SNcount=0
             time.sleep(10)
+        print("10s rest")
+        time.sleep(10)
 
+
+    print('pushed to clear')
     os.system(os.path.join(curdir,'clear.py'))
 
 except KeyboardInterrupt:    

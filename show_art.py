@@ -33,13 +33,13 @@ try:
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
 
-    logging.info("read bmp file on window")
+    logging.info("pasting image")
     Himage2 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
     bmp = Image.open(os.path.join(picdir, 'art.bmp'))
     Himage2.paste(bmp, (0,0))
     draw = ImageDraw.Draw(Himage2)
     epd.display(epd.getbuffer(Himage2))
-    time.sleep(1)
+    time.sleep(3)
 
     logging.info("Goto Sleep...")
     epd.sleep()
@@ -51,3 +51,4 @@ except KeyboardInterrupt:
     logging.info("ctrl + c:")
     epd7in5_V2.epdconfig.module_exit(cleanup=True)
     exit()
+print('image updated')
