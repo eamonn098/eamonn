@@ -16,31 +16,10 @@ from PIL import Image
 import requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-
+import get_art
 logging.basicConfig(level=logging.DEBUG)
 
-scope = "user-read-currently-playing,user-read-recently-played"
-#url for image
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
-results = sp.currently_playing()
-url=results['item']['album']['images'][0]['url']
-name=results['item']['album']['name']
-print(results)
 
-#set canvas size of eink
-Canv_size= (800,480)
-#blank canvas for screen
-Canv= Image.new("L",Canv_size, color=255)
-#open chonsen image from spotify url
-im = Image.open(requests.get(url, stream=True).raw)
-#get image info
-#image to BW
-im = im.convert("P")
-#sq fit to scren
-im = im.resize((460,460))
-#overlay
-Canv.paste(im, (170,10))
-Canv.save(os.path.join(picdir, 'tester.bmp'))
 
 try:
     logging.info("epd7in5_V2 Demo")
@@ -56,10 +35,9 @@ try:
 
     logging.info("read bmp file on window")
     Himage2 = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
-    bmp = Image.open(os.path.join(picdir, 'tester.bmp'))
+    bmp = Image.open(os.path.join(picdir, 'art.bmp'))
     Himage2.paste(bmp, (0,0))
     draw = ImageDraw.Draw(Himage2)
-    draw.text((10, 0), name, font = font60, fill = 0)
     epd.display(epd.getbuffer(Himage2))
     time.sleep(180)
 
