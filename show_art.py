@@ -20,7 +20,7 @@ import get_art
 logging.basicConfig(level=logging.DEBUG)
 
 
-
+print("loading art")
 try:
     logging.info("epd7in5_V2 Demo")
     epd = epd7in5_V2.EPD()

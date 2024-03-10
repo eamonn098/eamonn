@@ -50,6 +50,7 @@ try:
             Canv.paste(im, (160,10))
             Canv.save(os.path.join(picdir, 'art.bmp'))
             refname = name
+            print("changing scrpits")
             os.system(os.path.join(curdir,'show_art.py'))
             breakcount=0
             SNcount=0
