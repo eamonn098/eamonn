@@ -39,12 +39,7 @@ try:
     Himage2.paste(bmp, (0,0))
     draw = ImageDraw.Draw(Himage2)
     epd.display(epd.getbuffer(Himage2))
-    time.sleep(180)
-
-
-    logging.info("Clear...")
-    epd.init()
-    epd.Clear()
+    time.sleep(1)
 
     logging.info("Goto Sleep...")
     epd.sleep()

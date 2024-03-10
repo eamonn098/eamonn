@@ -48,7 +48,7 @@ try:
             im = im.resize((460,460))
             #overlay
             Canv.paste(im, (160,10))
-            Canv.save(os.path.join(picdir, 'tester.bmp'))
+            Canv.save(os.path.join(picdir, 'art.bmp'))
             refname = name
             os.system(os.path.join(curdir,'show_art.py'))
             breakcount=0
