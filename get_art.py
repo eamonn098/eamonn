@@ -50,7 +50,7 @@ try:
             Canv.paste(im, (160,10))
             Canv.save(os.path.join(picdir, 'tester.bmp'))
             refname = name
-            os.system(os.path.join(curdir,'show.art.py'))
+            os.system(os.path.join(curdir,'show_art.py'))
             breakcount=0
             SNcount=0
             time.sleep(10)
