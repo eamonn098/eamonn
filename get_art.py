@@ -52,9 +52,9 @@ try:
             refname = name
             print("changing scrpits")
             os.system(os.path.join(curdir,'show_art.py'))
+            time.sleep(10)
             breakcount=0
             SNcount=0
-            time.sleep(10)
         print("10s rest")
         time.sleep(10)
 

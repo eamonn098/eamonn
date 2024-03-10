@@ -43,6 +43,8 @@ try:
 
     logging.info("Goto Sleep...")
     epd.sleep()
+    epd7in5_V2.epdconfig.module_exit(cleanup=True)
+    exit()
     
 except IOError as e:
     logging.info(e)
