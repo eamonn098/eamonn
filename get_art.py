@@ -11,6 +11,7 @@ libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__)
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
+curdir=os.path.dirname(__file__)
 
 name="B"
 refname="A"
@@ -49,14 +50,14 @@ try:
             Canv.paste(im, (160,10))
             Canv.save(os.path.join(picdir, 'tester.bmp'))
             refname = name
-            os.system('show_art.py')
+            os.system(os.path.join(curdir,'show.art.py'))
             breakcount=0
             SNcount=0
             time.sleep(10)
 
-    os.system("clear.py")
+    os.system(os.path.join(curdir,'clear.py'))
 
 except KeyboardInterrupt:    
-    os.system("clear.py")
+    os.system(os.path.join(curdir,'clear.py'))
 
 
