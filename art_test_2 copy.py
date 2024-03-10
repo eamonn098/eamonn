@@ -25,7 +25,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 results = sp.currently_playing()
 url=results['item']['album']['images'][0]['url']
 name=results['item']['album']['name']
-print(results)
 
 #set canvas size of eink
 Canv_size= (800,480)

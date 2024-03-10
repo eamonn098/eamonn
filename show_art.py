@@ -52,3 +52,7 @@ except KeyboardInterrupt:
     epd7in5_V2.epdconfig.module_exit(cleanup=True)
     exit()
 print('image updated')
+   
+logging.info("cleared")
+epd7in5_V2.epdconfig.module_exit(cleanup=True)
+exit()
