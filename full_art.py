@@ -36,9 +36,7 @@ try:
         time.sleep(10)
         if refname == name:
             SNcount=+1
-            time.sleep(10)
-        elif name=="none": 
-            breakcount=+1
+            print("no change")
             time.sleep(10)
         else: 
             print(name)
