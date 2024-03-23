@@ -27,6 +27,8 @@ try:
         results = sp.currently_playing()
         url=results['item']['album']['images'][0]['url']
         name=results['item']['name']
+        print("10s rest")
+        time.sleep(10)
         if refname == name:
             SNcount=+1
             time.sleep(10)
@@ -55,13 +57,7 @@ try:
             time.sleep(10)
             breakcount=0
             SNcount=0
-        print("10s rest")
-        time.sleep(10)
-
-
-    print('pushed to clear')
-    os.system(os.path.join(curdir,'clear.py'))
-
+            
 except KeyboardInterrupt:    
     os.system(os.path.join(curdir,'clear.py'))
 
