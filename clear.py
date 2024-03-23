@@ -8,7 +8,7 @@ if os.path.exists(libdir):
     sys.path.append(libdir)
 
 import logging
-from waveshare_epd import epd7in5_V2
+from lib import epd7in5_V2
 import time
 from spotipy.oauth2 import SpotifyOAuth
 logging.basicConfig(level=logging.DEBUG)
