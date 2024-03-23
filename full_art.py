@@ -1,21 +1,22 @@
-from PIL import Image
-import requests
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-from waveshare_epd import epd7in5_V2
-from PIL import Image,ImageDraw,ImageFont
-import time
 import sys
-import logging
-logging.basicConfig(level=logging.DEBUG)
-
 import os
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
-curdir=os.path.dirname(__file__)
+import logging
+from waveshare_epd import epd7in5_V2
+import time
+from PIL import Image,ImageDraw,ImageFont
+import traceback
+from PIL import Image
+import requests
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+import get_art
+logging.basicConfig(level=logging.DEBUG)
+
 
 name="B"
 refname="A"
