@@ -107,6 +107,7 @@ def newart():
     except KeyboardInterrupt:    
         logging.info("ctrl + c:")
         epd7in5_V2
+    return
 
 def sleep(): 
     try:
