@@ -98,6 +98,7 @@ def newart():
         logging.info("Goto Sleep...")
         epd.sleep()
         epd7in5_V2.epdconfig.module_exit(cleanup=True)
+        print("image update complete")
         exit()
         
     except IOError as e:
@@ -118,6 +119,7 @@ def sleep():
         epd.Clear()
 
         logging.info("Goto Sleep...")
+        print("going to sleep")
         epd.sleep()
         
     except IOError as e:

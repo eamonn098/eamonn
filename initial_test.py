@@ -16,13 +16,12 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, open_browser=False))
 currenttrack="none"
 inac=0
 #this variable is how long before the loop times out looking for a new track( 3x in seconds)
-timeoutct =10
+timeoutct = 100
 
 # print(Scripts.currenttrack)
 
-print()
 try:
-    while Scripts.currenttrack==0 and inac<timeoutct and Scripts.trackplaying()==True:
+    while inac<timeoutct and Scripts.trackplaying()==True:
 
         if Scripts.trackinfo()[1]==currenttrack:
             inac+=1
@@ -36,6 +35,6 @@ try:
 
 except KeyboardInterrupt:
     print("stop")
-    Scripts.sleep
+    Scripts.sleep()
 
 
