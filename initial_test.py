@@ -25,13 +25,15 @@ try:
 
         if Scripts.trackinfo()[1]==currenttrack:
             inac+=1
-            time.sleep(3)
+            time.sleep(10)
+            print(inac)
         else:
             print(Scripts.trackinfo()[1])
             currenttrack=Scripts.trackinfo()[1]
             inac=0
             Scripts.newart()
             time.sleep(10)
+
 
 except KeyboardInterrupt:
     print("stop")
