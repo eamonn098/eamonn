@@ -99,7 +99,7 @@ def newart():
         epd.sleep()
         epd7in5_V2.epdconfig.module_exit(cleanup=True)
         print("image update complete")
-        exit()
+        return
         
     except IOError as e:
         logging.info(e)
@@ -128,4 +128,4 @@ def sleep():
     except KeyboardInterrupt:    
         logging.info("ctrl + c:")
         epd7in5_V2.epdconfig.module_exit(cleanup=True)
-        exit()
+        return
