@@ -4,6 +4,20 @@ import Scripts
 import time
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
+scope = "user-library-read"
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+
+results = sp.current_user_saved_tracks()
+for idx, item in enumerate(results['items']):
+    track = item['track']
+    print(idx, track['artists'][0]['name'], " – ", track['name'])
+
+    
 scope = "user-read-currently-playing,user-read-recently-played"
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 #vars
@@ -14,7 +28,7 @@ inac=0
 timeoutct =10
 
 # print(Scripts.currenttrack)
-    
+
 print()
 try:
     while Scripts.currenttrack==0 and inac<timeoutct and Scripts.trackplaying()==True:
