@@ -1,4 +1,9 @@
 
+from __future__ import print_function
+import sys
+import spotipy
+import spotipy.util as util
+
 #imports
 import Scripts
 import time
@@ -7,11 +12,6 @@ from spotipy.oauth2 import SpotifyOAuth
 
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-
-from __future__ import print_function
-import sys
-import spotipy
-import spotipy.util as util
 
 scope = 'user-library-read'
 
@@ -31,7 +31,7 @@ if token:
         print(track['name'] + ' - ' + track['artists'][0]['name'])
 else:
     print("Can't get token for", username)
-    
+
 scope = "user-library-read"
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
