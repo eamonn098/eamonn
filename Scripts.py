@@ -79,8 +79,9 @@ def newart():
     try:
         epd = epd7in5_V2.EPD()
         
-        logging.info("init and Clear")
+        logging.info("init")
         epd.init()
+        logging.info("Clear...")
         epd.Clear()
 
         font60 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 60)
@@ -115,8 +116,9 @@ def sleep():
         epd = epd7in5_V2.EPD()
         
 
-        logging.info("Clear...")
+        logging.info("init")
         epd.init()
+        logging.info("Clear...")
         epd.Clear()
 
         logging.info("Goto Sleep...")
