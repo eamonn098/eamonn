@@ -74,6 +74,7 @@ def newart():
     #overlay
     Canv.paste(im, (160,10))
     Canv.save(os.path.join(picdir, 'art.bmp'))
+    print("Art saved")
 
     try:
         epd = epd7in5_V2.EPD()
