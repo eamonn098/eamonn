@@ -31,6 +31,7 @@ try:
             print(Scripts.trackinfo()[1])
             currenttrack=Scripts.trackinfo()[1]
             inac=0
+            Scripts.sleep()
             Scripts.newart()
             time.sleep(10)
 
