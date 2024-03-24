@@ -20,7 +20,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, open_browser=False))
 
 import requests
 
-#logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 
 currenttrack=0
 
