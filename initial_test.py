@@ -5,12 +5,12 @@ import time
 
 
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-
-client_credentials_manager = SpotifyClientCredentials()
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+from spotipy.oauth2 import SpotifyOAuth
 
 scope = "user-read-currently-playing,user-read-recently-played"
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, open_browser=False))
+
+
 #vars
 #init vars
 currenttrack="none"

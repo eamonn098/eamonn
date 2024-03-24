@@ -12,10 +12,11 @@ from PIL import Image,ImageDraw,ImageFont
 import traceback
 
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 
-client_credentials_manager = SpotifyClientCredentials()
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+scope = "user-read-currently-playing,user-read-recently-played"
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, open_browser=False))
+
 
 import requests
 
@@ -28,8 +29,7 @@ currenttrack=0
 def trackplaying():
     #set spotify scope for auth
     scope = "user-read-currently-playing,user-read-recently-played"
-    #url for image
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, open_browser=False))
     results = sp.currently_playing()
     if results == None:
         output= False
@@ -44,8 +44,7 @@ def imageurl():
 def trackinfo():
     #set spotify scope for auth
     scope = "user-read-currently-playing,user-read-recently-played"
-    #url for image
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, open_browser=False))
     results = sp.currently_playing()
     if results == None:
         return ["nothing playing",0]
@@ -57,7 +56,7 @@ def trackinfo():
 
 def newart(): 
     scope = "user-read-currently-playing,user-read-recently-played"
-    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, open_browser=False))
     results = sp.currently_playing()
     url=results['item']['album']['images'][0]['url']
     name=results['item']['name']
