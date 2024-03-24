@@ -1,49 +1,16 @@
 
-from __future__ import print_function
-import sys
-import spotipy
-import spotipy.util as util
-
 #imports
 import Scripts
 import time
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+
 
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+from spotipy.oauth2 import SpotifyClientCredentials
 
-scope = 'user-library-read'
+client_credentials_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-if len(sys.argv) > 1:
-    username = sys.argv[1]
-else:
-    print("Usage: %s username" % (sys.argv[0],))
-    sys.exit()
-
-token = util.prompt_for_user_token(username, scope)
-
-if token:
-    sp = spotipy.Spotify(auth=token)
-    results = sp.current_user_saved_tracks()
-    for item in results['items']:
-        track = item['track']
-        print(track['name'] + ' - ' + track['artists'][0]['name'])
-else:
-    print("Can't get token for", username)
-
-scope = "user-library-read"
-
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
-
-results = sp.current_user_saved_tracks()
-for idx, item in enumerate(results['items']):
-    track = item['track']
-    print(idx, track['artists'][0]['name'], " – ", track['name'])
-
-    
 scope = "user-read-currently-playing,user-read-recently-played"
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 #vars
 #init vars
 currenttrack="none"

@@ -10,8 +10,13 @@ from lib import epd7in5_V2
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
+
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+from spotipy.oauth2 import SpotifyClientCredentials
+
+client_credentials_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
 import requests
 
 #logging.basicConfig(level=logging.DEBUG)
@@ -20,12 +25,11 @@ currenttrack=0
 
 
 
-
 def trackplaying():
     #set spotify scope for auth
     scope = "user-read-currently-playing,user-read-recently-played"
     #url for image
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     results = sp.currently_playing()
     if results == None:
         output= False
@@ -41,7 +45,7 @@ def trackinfo():
     #set spotify scope for auth
     scope = "user-read-currently-playing,user-read-recently-played"
     #url for image
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     results = sp.currently_playing()
     if results == None:
         return ["nothing playing",0]
@@ -53,7 +57,7 @@ def trackinfo():
 
 def newart(): 
     scope = "user-read-currently-playing,user-read-recently-played"
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     results = sp.currently_playing()
     url=results['item']['album']['images'][0]['url']
     name=results['item']['name']
@@ -102,3 +106,24 @@ def newart():
     except KeyboardInterrupt:    
         logging.info("ctrl + c:")
         epd7in5_V2
+
+def sleep(): 
+    try:
+        logging.info("epd7in5_V2 Demo")
+        epd = epd7in5_V2.EPD()
+        
+
+        logging.info("Clear...")
+        epd.init()
+        epd.Clear()
+
+        logging.info("Goto Sleep...")
+        epd.sleep()
+        
+    except IOError as e:
+        logging.info(e)
+        
+    except KeyboardInterrupt:    
+        logging.info("ctrl + c:")
+        epd7in5_V2.epdconfig.module_exit(cleanup=True)
+        exit()
